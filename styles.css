@@ -1,0 +1,23 @@
+/* Page Centering */
+.main { 
+  min-height: 100vh; 
+  display: flex; 
+  align-items: center; 
+  background: var(--bs-tertiary-bg); 
+  padding: 2rem 0; 
+}
+
+[data-bs-theme="dark"] h5, 
+[data-bs-theme="dark"] .form-label { 
+  color: var(--bs-body-color); 
+  margin-bottom: 0.5rem; 
+}
+
+/* --- Typography & Headings --- */
+.demo-heading {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+  color: var(--bs-body-color);
+  letter-spacing: -0.5px;
+}

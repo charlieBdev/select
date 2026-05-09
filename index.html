@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link href="bo-selecta/bo-selecta.css" rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="main" data-bs-theme="dark">
+      <div class="container" style="max-width: 1200px">
+        <h2 class="demo-heading">Bo Selecta Demo</h2>
+
+        <div class="row g-4">
+          <!-- Column 1: Raw HTML -->
+          <div class="col-md-4">
+            <form
+              id="rawForm"
+              class="d-flex flex-column p-4 border rounded bg-body shadow-sm h-100"
+            >
+              <h5 class="mb-3">Raw HTML Selects</h5>
+
+              <div class="mb-3">
+                <label for="raw-pets" class="form-label fw-bold" style="display: block;">Pets:</label>
+                <select id="raw-pets" name="raw-pets">
+                  <option>Dog</option>
+                  <option>Cat</option>
+                  <option>Hamster</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="raw-flavours" class="form-label fw-bold" style="display: block;">Flavours:</label>
+                <select
+                  id="raw-flavours"
+                  name="raw-flavours"
+                  multiple
+                >
+                  <option>Vanilla</option>
+                  <option>Chocolate</option>
+                  <option>Strawberry</option>
+                </select>
+              </div>
+
+              <div class="mt-auto">
+                <button type="submit" class="btn btn-outline-primary w-100">
+                  Submit Raw
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Column 2: Bootstrap Enhanced -->
+          <div class="col-md-4">
+            <form
+              id="standardForm"
+              class="d-flex flex-column p-4 border rounded bg-body shadow-sm h-100"
+            >
+              <h5 class="mb-3">Bootstrap Selects</h5>
+
+              <div class="mb-3">
+                <label for="bs-pets" class="form-label fw-bold">Pets:</label>
+                <select id="bs-pets" name="bs-pets" class="form-select">
+                  <option value="" selected>Choose a pet...</option>
+                  <option value="dog">Dog</option>
+                  <option value="cat">Cat</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="bs-flavours" class="form-label fw-bold">Flavours:</label>
+                <select id="bs-flavours" name="bs-flavours" class="form-select" multiple>
+                  <option value="vanilla">Vanilla</option>
+                  <option value="chocolate">Chocolate</option>
+                  <option value="strawberry">Strawberry</option>
+                </select>
+              </div>
+
+              <div class="mt-auto">
+                <button type="submit" class="btn btn-outline-primary w-100">
+                  Submit BS
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Column 3: Custom Multi-Select -->
+          <div class="col-md-4">
+            <form
+              id="customForm"
+              class="d-flex flex-column p-4 border rounded bg-body shadow-sm h-100"
+            >
+              <h5 class="mb-3">Custom Multi Selects</h5>
+
+              <div class="mb-3">
+                <label for="pets-select" class="form-label fw-bold">Pets:</label>
+                <select id="pets-select" name="pets" class="d-none" multiple>
+                  <option value="dog">Dog</option>
+                  <option value="cat">Cat</option>
+                  <option value="hamster">Hamster</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="flavours-select" class="form-label fw-bold">Flavours:</label>
+                <select
+                  id="flavours-select"
+                  name="flavours"
+                  class="d-none"
+                  multiple
+                >
+                  <optgroup label="Classic">
+                    <option value="vanilla">Vanilla</option>
+                    <option value="chocolate">Chocolate</option>
+                  </optgroup>
+                  <optgroup label="Fruit">
+                    <option value="strawberry">Strawberry</option>
+                  </optgroup>
+                </select>
+              </div>
+
+              <div class="mt-auto">
+                <button type="submit" class="btn btn-outline-primary w-100">
+                  Submit Custom
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="bo-selecta/bo-selecta.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
