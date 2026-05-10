@@ -37,7 +37,8 @@ function doSelecta(elementId, options = {}) {
 
   const clearBtn = document.createElement("span");
   clearBtn.className = "ds-clear-trigger";
-  clearBtn.title = isMultiple ? "Clear All" : "Clear";
+  clearBtn.title = "Clear All";
+  clearBtn.style.display = "none"; // Hidden by default until items are selected
 
   const popover = document.createElement("div");
   popover.id = popoverId;
@@ -88,7 +89,8 @@ function doSelecta(elementId, options = {}) {
 
   popover.appendChild(optionsWrapper);
   select.parentNode.insertBefore(container, select);
-  [trigger, clearBtn, popover, select].forEach(el => container.appendChild(el));
+  [trigger, popover, select].forEach(el => container.appendChild(el));
+  if (isMultiple) container.appendChild(clearBtn);
 
   const enforceLimits = () => {
     if (!isMultiple || !maxOptions) return;
@@ -141,11 +143,13 @@ function doSelecta(elementId, options = {}) {
     if (typeof tooltipsFunction === "function") tooltipsFunction();
   };
 
-  clearBtn.onclick = (e) => { 
-    e.preventDefault(); 
-    optionsWrapper.querySelectorAll("input").forEach(i => i.checked = false); 
-    updateUI(); 
-  };
+  if (isMultiple) {
+    clearBtn.onclick = (e) => { 
+      e.preventDefault(); 
+      optionsWrapper.querySelectorAll("input").forEach(i => i.checked = false); 
+      updateUI(); 
+    };
+  }
 
   optionsWrapper.onchange = (e) => {
     if (!isMultiple) {

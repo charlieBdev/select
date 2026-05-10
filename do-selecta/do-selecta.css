@@ -85,7 +85,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  width: 100%; /* Ensure it takes full width of the form */
+  flex: 1 1 auto; /* Grows to fill available space but doesn't force wrapping when empty */
+  min-width: 0; /* Allows container to shrink, forces children to truncate */
 }
 
 /* 2. The Chip: Acts as the boundary */
