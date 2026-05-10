@@ -15,8 +15,8 @@ export const howToContent = /* html */ `
     <h6 class="fw-bold mt-4">2. Initialize via JavaScript</h6>
     <p class="text-muted">Pass the <strong>ID</strong> of your select and a configuration <strong>object</strong>.</p>
 
-    <pre><code><span class="token-fn">doSelecta</span>(<span class="token-string">"pets-select"</span>, {
-  <span class="token-attr">placeholder</span>: <span class="token-string">"Select your pets..."</span>,
+    <pre><code><span class="token-fn">doSelecta</span>(<span class="token-string">'pets-select'</span>, {
+  <span class="token-attr">placeholder</span>: <span class="token-string">'Select your pets...'</span>,
   <span class="token-attr">tooltipsFunction</span>: <span class="token-fn">setTooltips</span>
 });</code></pre>
 
@@ -58,7 +58,7 @@ export const howToContent = /* html */ `
             <td class="font-monospace text-primary">tooltipsFunction</td>
             <td><code>function</code></td>
             <td class="text-muted">null</td>
-            <td>Callback to re-initialize tooltips after UI updates.</td>
+            <td>Callback to re-initialize Bootstrap tooltips after UI updates. This should be your own if you have one.</td>
           </tr>
         </tbody>
       </table>

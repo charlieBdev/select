@@ -80,31 +80,47 @@
 }
 
 /* --- Badges / Chips --- */
+/* 1. The Wrapper: Allows chips to flow naturally */
 .do-selecta-container .ds-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px; /* Space between badges */
+  gap: 6px;
+  width: 100%; /* Ensure it takes full width of the form */
 }
 
+/* 2. The Chip: Acts as the boundary */
 .do-selecta-container .badge.ds-chip { 
-  display: inline-flex; 
+  display: flex; 
   align-items: center; 
-  gap: 0.5rem; 
+  max-width: 100%; /* Crucial: ensures chip doesn't exceed form width */
   padding: 0.45em 0.65em; 
   background: var(--bs-primary); 
   color: #fff; 
-  max-width: 100%; 
-  cursor: default; 
+  cursor: default;
+  overflow: hidden;
 }
 
+/* 3. The Text: The greedy part that truncates */
+.do-selecta-container .ds-chip-text {
+  display: block;
+  flex: 1 1 auto; /* Take up all available space */
+  min-width: 0;    /* The "magic" rule that forces ellipsis to work */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 4. The Button: The fixed part that never moves */
 .do-selecta-container .ds-remove-chip { 
+  flex: 0 0 auto; /* Keeps the 'x' at a constant size */
   cursor: pointer; 
   background: none; 
   border: none; 
   color: #fff; 
   font-size: 1.1em; 
   line-height: 1; 
-  padding: 0; 
+  padding: 0;
+  margin-left: 8px; /* Fixed gap from the text */
 }
 
 /* --- Dropdown Content --- */
