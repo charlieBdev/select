@@ -1,6 +1,4 @@
-console.log("Hello, World! This is script.js file.");
-
-const setTooltips = () => {
+  const setTooltips = () => {
   document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
     const t = bootstrap.Tooltip.getInstance(el);
     if (t) t.dispose();
@@ -8,12 +6,17 @@ const setTooltips = () => {
   });
 };
 
-initBBMultiSelect("pets-select");
-initBBMultiSelect("flavours-select");
+doSelecta("apes-select", { placeholder: "Select an ape...", tooltipsFunction: setTooltips, showSearch: false });
+doSelecta("pets-select", { placeholder: "Select your pets...", tooltipsFunction: setTooltips });
+doSelecta("flavours-select", { placeholder: "Select up to 2 flavours...", tooltipsFunction: setTooltips, maxOptions: 2 });
 
 document.querySelectorAll("form").forEach(f => f.onsubmit = e => {
   e.preventDefault();
-  console.log(f.id, Object.fromEntries(new FormData(e.target).entries()));
+  
+  const formData = new FormData(e.target);
+  
+  // This logs exactly what the browser 'sees' before sending to a server
+  console.log(`${f.id} Payload:`, [...formData.entries()]);
 });
 
 // add a click to demo-heading that will change bs-theme to dark and light

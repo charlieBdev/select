@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Do Selecta</title>
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -11,13 +11,15 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
-    <link href="bo-selecta/bo-selecta.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link href="do-selecta/do-selecta.css" rel="stylesheet" />
     <link href="styles.css" rel="stylesheet" />
   </head>
-  <body>
+  <body class="bg-body text-body">
     <div class="main" data-bs-theme="dark">
       <div class="container" style="max-width: 1200px">
-        <h2 class="demo-heading">Bo Selecta Demo</h2>
+
+        <h2 class="demo-heading">Do Selecta Demo</h2>
 
         <div class="row g-4">
           <!-- Column 1: Raw HTML -->
@@ -29,8 +31,15 @@
               <h5 class="mb-3">Raw HTML Selects</h5>
 
               <div class="mb-3">
-                <label for="raw-pets" class="form-label fw-bold" style="display: block;">Pets:</label>
-                <select id="raw-pets" name="raw-pets">
+                <label for="raw-pets" class="form-label" style="display: block">
+                  Pets: (single)
+                </label>
+                <select
+                  id="raw-pets"
+                  name="raw-pets"
+                  style="display: block; width: 100%; box-sizing: border-box"
+                >
+                  <option value="">Choose an option...</option>
                   <option>Dog</option>
                   <option>Cat</option>
                   <option>Hamster</option>
@@ -38,11 +47,18 @@
               </div>
 
               <div class="mb-3">
-                <label for="raw-flavours" class="form-label fw-bold" style="display: block;">Flavours:</label>
+                <label
+                  for="raw-flavours"
+                  class="form-label"
+                  style="display: block"
+                >
+                  Flavours: (multiple)
+                </label>
                 <select
                   id="raw-flavours"
                   name="raw-flavours"
                   multiple
+                  style="display: block; width: 100%; box-sizing: border-box"
                 >
                   <option>Vanilla</option>
                   <option>Chocolate</option>
@@ -67,17 +83,26 @@
               <h5 class="mb-3">Bootstrap Selects</h5>
 
               <div class="mb-3">
-                <label for="bs-pets" class="form-label fw-bold">Pets:</label>
+                <label for="bs-pets" class="form-label">
+                  Pets: (single)
+                </label>
                 <select id="bs-pets" name="bs-pets" class="form-select">
-                  <option value="" selected>Choose a pet...</option>
+                  <option value="" selected>Choose an option...</option>
                   <option value="dog">Dog</option>
                   <option value="cat">Cat</option>
                 </select>
               </div>
 
               <div class="mb-3">
-                <label for="bs-flavours" class="form-label fw-bold">Flavours:</label>
-                <select id="bs-flavours" name="bs-flavours" class="form-select" multiple>
+                <label for="bs-flavours" class="form-label"
+                  >Flavours: (multiple)</label
+                >
+                <select
+                  id="bs-flavours"
+                  name="bs-flavours"
+                  class="form-select"
+                  multiple
+                >
                   <option value="vanilla">Vanilla</option>
                   <option value="chocolate">Chocolate</option>
                   <option value="strawberry">Strawberry</option>
@@ -98,19 +123,37 @@
               id="customForm"
               class="d-flex flex-column p-4 border rounded bg-body shadow-sm h-100"
             >
-              <h5 class="mb-3">Custom Multi Selects</h5>
+              <h5 class="mb-3">Do Selecta Selects</h5>
 
               <div class="mb-3">
-                <label for="pets-select" class="form-label fw-bold">Pets:</label>
-                <select id="pets-select" name="pets" class="d-none" multiple>
-                  <option value="dog">Dog</option>
-                  <option value="cat">Cat</option>
-                  <option value="hamster">Hamster</option>
+                <label for="pets-select" class="form-label">
+                  Apes: (single)
+                </label>
+                <select id="apes-select" name="apes" class="d-none">
+                  <option value="orangutan">Orangutan</option>
+                  <option value="chimpanzee">Chimpanzee</option>
+                  <option value="gorilla">Gorilla</option>
                 </select>
               </div>
 
               <div class="mb-3">
-                <label for="flavours-select" class="form-label fw-bold">Flavours:</label>
+                <label for="pets-select" class="form-label">
+                  Pets: (multiple)
+                </label>
+                <select id="pets-select" name="pets" class="d-none" multiple>
+                  <option value="dog">Dog</option>
+                  <option value="cat">Cat</option>
+                  <option value="hamster">Hamster</option>
+                  <option value="parrot">Parrot</option>
+                  <option value="rabbit">Rabbit</option>
+                  <option value="supercalifragilisticexpialidocious">Supercalifragilisticexpialidocious</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="flavours-select" class="form-label">
+                  Flavours: (multiple with optgroups)
+                </label>
                 <select
                   id="flavours-select"
                   name="flavours"
@@ -135,6 +178,75 @@
             </form>
           </div>
         </div>
+
+<div class="container my-5">
+  <div class="card bg-body-secondary border-0 p-4 shadow-sm">
+    <h4 class="mb-3">How to use Bo Selecta</h4>
+    <p>This component is compatible with <strong>Bootstrap 5.3.8</strong> and enhances standard select elements into searchable dropdowns.</p>
+    
+    <h6 class="fw-bold mt-4">1. Define your HTML Select</h6>
+    <p class="text-muted">Standard select. The function handles both single and multi-select modes automatically.</p>
+    
+    <pre><code>&lt;<span class="token-tag">select</span> <span class="token-attr">id</span>=<span class="token-val">"pets-select"</span> <span class="token-attr">name</span>=<span class="token-val">"pets"</span> <span class="token-attr">class</span>=<span class="token-val">"d-none"</span> <span class="token-attr">multiple</span>&gt;
+  &lt;<span class="token-tag">option</span> <span class="token-attr">value</span>=<span class="token-val">"dog"</span>&gt;Dog&lt;/<span class="token-tag">option</span>&gt;
+  &lt;<span class="token-tag">option</span> <span class="token-attr">value</span>=<span class="token-val">"cat"</span>&gt;Cat&lt;/<span class="token-tag">option</span>&gt;
+  &lt;<span class="token-tag">option</span> <span class="token-attr">value</span>=<span class="token-val">"hamster"</span>&gt;Hamster&lt;/<span class="token-tag">option</span>&gt;
+&lt;/<span class="token-tag">select</span>&gt;</code></pre>
+
+    <h6 class="fw-bold mt-4">2. Initialize via JavaScript</h6>
+    <p class="text-muted">Pass the <strong>ID</strong> of your select and a configuration <strong>object</strong>.</p>
+
+    <pre><code><span class="token-fn">doSelecta</span>(<span class="token-string">"pets-select"</span>, {
+  <span class="token-attr">placeholder</span>: <span class="token-string">"Select your pets..."</span>,
+  <span class="token-attr">tooltipsFunction</span>: <span class="token-fn">setTooltips</span>
+});</code></pre>
+
+    <hr class="my-4 opacity-25">
+
+    <h6 class="fw-bold">Configuration Options</h6>
+    <p class="text-muted small">Available properties for the <code>options</code> object:</p>
+    
+    <div class="table-responsive">
+      <table class="table table-sm table-borderless align-middle small">
+        <thead class="text-secondary border-bottom">
+          <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="font-monospace text-primary">placeholder</td>
+            <td><code>string</code></td>
+            <td class="text-muted">"Choose options..."</td>
+            <td>The text shown when nothing is selected.</td>
+          </tr>
+          <tr>
+            <td class="font-monospace text-primary">showSearch</td>
+            <td><code>boolean</code></td>
+            <td class="text-muted">true</td>
+            <td>Adds a sticky search bar to the dropdown.</td>
+          </tr>
+          <tr>
+            <td class="font-monospace text-primary">maxOptions</td>
+            <td><code>number</code></td>
+            <td class="text-muted">null</td>
+            <td>Limits selections (Multi-select only). Disables further inputs when reached.</td>
+          </tr>
+          <tr>
+            <td class="font-monospace text-primary">tooltipsFunction</td>
+            <td><code>function</code></td>
+            <td class="text-muted">null</td>
+            <td>Callback to re-initialize tooltips after UI updates.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
       </div>
     </div>
 
@@ -143,7 +255,7 @@
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
-    <script src="bo-selecta/bo-selecta.js"></script>
+    <script src="do-selecta/do-selecta.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

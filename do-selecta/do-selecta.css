@@ -1,0 +1,177 @@
+.do-selecta-container { 
+  width: 100%; 
+  position: relative; 
+  display: flex; 
+  flex-direction: column; 
+}
+
+/* --- The Trigger (Simulated Select) --- */
+.do-selecta-container .ds-trigger.form-select {
+  anchor-name: var(--ds-anchor-name); 
+  display: flex; 
+  flex-wrap: wrap; 
+  align-items: center; 
+  align-content: center; /* Keeps placeholder centered when empty */
+  gap: 0.5rem; 
+  min-height: 38px; 
+  height: auto; 
+  
+  padding: 0.375rem 3.5rem 0.375rem 0.75rem; 
+  
+  cursor: pointer;
+  position: relative; 
+  text-align: left;
+  background-color: var(--bs-form-control-bg);
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  
+  /* Ensure the Bootstrap arrow is positioned correctly with your custom padding */
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* FIXED: Standard Blue Focus Ring & Blur */
+.do-selecta-container .ds-trigger.form-select:focus {
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  background-color: var(--bs-form-control-bg);
+}
+
+/* --- Clear All X (Theme-Aware Mask) --- */
+.do-selecta-container .ds-clear-trigger {
+  position: absolute; 
+  right: 2.25rem; 
+  top: 50%; 
+  transform: translateY(-50%);
+  width: 1rem; 
+  height: 1rem; 
+  z-index: 10; 
+  cursor: pointer; 
+  display: none;
+
+  /* Use mask to define the shape (1.2 thickness) */
+  -webkit-mask: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.2' d='M4 4l8 8m0-8l-8 8'/%3e%3c/svg%3e") no-repeat center/contain;
+  mask: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.2' d='M4 4l8 8m0-8l-8 8'/%3e%3c/svg%3e") no-repeat center/contain;
+
+  /* The actual color: Matches the arrow (Dark in light mode, Light in dark mode) */
+  background-color: var(--bs-secondary-color);
+  transition: background-color 0.15s ease-in-out;
+}
+
+/* RED on hover - Works perfectly now because we just change the background color */
+.do-selecta-container .ds-clear-trigger:hover { 
+  background-color: #dc3545 !important; 
+}
+
+/* --- Search Input X (Theme-Aware Mask) --- */
+.ds-search-wrapper input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  height: 1rem;
+  width: 1rem;
+  cursor: pointer;
+  
+  -webkit-mask: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.2' d='M4 4l8 8m0-8l-8 8'/%3e%3c/svg%3e") no-repeat center/contain;
+  mask: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.2' d='M4 4l8 8m0-8l-8 8'/%3e%3c/svg%3e") no-repeat center/contain;
+  
+  background-color: var(--bs-secondary-color);
+}
+
+/* --- Badges / Chips --- */
+.do-selecta-container .ds-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px; /* Space between badges */
+}
+
+.do-selecta-container .badge.ds-chip { 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 0.5rem; 
+  padding: 0.45em 0.65em; 
+  background: var(--bs-primary); 
+  color: #fff; 
+  max-width: 100%; 
+  cursor: default; 
+}
+
+.do-selecta-container .ds-remove-chip { 
+  cursor: pointer; 
+  background: none; 
+  border: none; 
+  color: #fff; 
+  font-size: 1.1em; 
+  line-height: 1; 
+  padding: 0; 
+}
+
+/* --- Dropdown Content --- */
+.do-selecta-container .ds-dropdown[popover] {
+  inset: auto;
+  position-anchor: var(--ds-anchor-name);
+  
+  /* 1. Default position: Bottom */
+  top: anchor(bottom);
+  left: anchor(left);
+  width: anchor-size(width);
+  
+  /* 2. The Magic: If it hits the edge of the screen, try the top */
+  position-try-fallbacks: flip-block;
+  
+  /* 3. Safety: Ensure it never grows larger than the available window height */
+  max-height: min(300px, 40vh);
+  
+  overflow-y: auto;
+  margin: 4px 0;
+  padding: 0;
+  background: var(--bs-body-bg);
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  box-shadow: var(--bs-box-shadow);
+}
+
+.do-selecta-container .ds-search-wrapper {
+  position: sticky;
+  top: 0; 
+  z-index: 10; 
+  padding: 0.75rem; 
+  background: var(--bs-body-bg); 
+  border-bottom: 1px solid var(--bs-border-color); 
+}
+
+/* --- Options & Checkboxes --- */
+.do-selecta-container .ds-optgroup-label { 
+  padding: 0.5rem 1rem; 
+  font-weight: bold; 
+  font-size: 0.85rem; 
+  color: var(--bs-secondary); 
+  background: var(--bs-tertiary-bg); 
+}
+
+.do-selecta-container .ds-options .form-check { 
+  padding: 0.5rem 1rem; 
+  margin: 0; 
+  cursor: pointer; 
+  display: flex; 
+  align-items: center; 
+  gap: 10px; /* Space between checkbox and text */
+}
+
+.do-selecta-container .ds-options .form-check:hover { 
+  background: var(--bs-tertiary-bg); 
+}
+
+.do-selecta-container .ds-options .form-check-input { 
+  margin: 0; 
+  flex-shrink: 0; 
+  cursor: pointer; 
+}
+
+/* --- Scrollbar Styling --- */
+.do-selecta-container .ds-dropdown::-webkit-scrollbar { width: 6px; }
+.do-selecta-container .ds-dropdown::-webkit-scrollbar-thumb { 
+  background: var(--bs-border-color); 
+  border-radius: 10px; 
+}

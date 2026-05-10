@@ -1,14 +1,16 @@
-/* Page Centering */
+/* Page Centering & Adaptive Background */
 .main { 
   min-height: 100vh; 
   display: flex; 
-  align-items: center; 
+  flex-direction: column; /* Stack header, card, and rows vertically */
+  justify-content: center; /* Center them if there is extra space */
   background: var(--bs-tertiary-bg); 
   padding: 2rem 0; 
+  color: var(--bs-body-color);
 }
 
-[data-bs-theme="dark"] h5, 
-[data-bs-theme="dark"] .form-label { 
+/* Ensure labels are always visible in both modes */
+h5, .form-label { 
   color: var(--bs-body-color); 
   margin-bottom: 0.5rem; 
 }
@@ -20,4 +22,54 @@
   font-weight: 700;
   color: var(--bs-body-color);
   letter-spacing: -0.5px;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+  display: block; 
+  width: fit-content; 
+  margin-inline: auto; 
+}
+
+.demo-heading:hover {
+  color: var(--bs-primary);
+}
+
+/* Explanation Card */
+.card.bg-body-secondary {
+  max-width: 900px;
+  margin-inline: auto;
+  border-radius: 12px;
+  background-color: var(--bs-secondary-bg) !important;
+  border: 1px solid var(--bs-border-color);
+  color: var(--bs-body-color);
+  margin-bottom: 3rem; /* Space between explanation and demo columns */
+}
+
+/* Code Blocks */
+/* --- Code Editor Styling --- */
+pre {
+  background-color: var(--bs-tertiary-bg) !important;
+  border: 1px solid var(--bs-border-color);
+  color: var(--bs-body-color);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+/* Syntax Highlighting (Light Theme defaults) */
+.token-tag { color: #cf222e; font-weight: 600; }
+.token-attr { color: #24292f; }
+.token-val { color: #0a3069; }
+.token-string { color: #0a3069; }
+.token-comment { color: #6e7781; font-style: italic; }
+.token-fn { color: #8250df; font-weight: 600; }
+
+/* Syntax Highlighting (Dark Theme overrides) */
+[data-bs-theme="dark"] .token-tag { color: #ff7b72; }
+[data-bs-theme="dark"] .token-attr { color: #adbac7; }
+[data-bs-theme="dark"] .token-val { color: #96d0ff; }
+[data-bs-theme="dark"] .token-string { color: #96d0ff; }
+[data-bs-theme="dark"] .token-comment { color: #768390; }
+[data-bs-theme="dark"] .token-fn { color: #d2a8ff; }
+
+code {
+    color: var(--bs-info-text-emphasis); /* Makes the tags/vars pop slightly */
 }
